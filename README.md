@@ -1,4 +1,4 @@
-# Linux-Commands : 101
+# Linux Commands : 101
 ![](https://i.imgur.com/PvdtcF2.png)
 
 ### Table of Contents
