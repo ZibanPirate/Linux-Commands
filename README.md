@@ -32,7 +32,7 @@
    sudheer :0 2019-08-04 01:21 (:0)
    ```
 
-2. **whoami:** It display the system’s username
+2. **whoami:** It display the system’s current username
 
    ```bash
    $ whoami
@@ -72,12 +72,12 @@
    sj
    ```
 
-7. **grep:** It  is a powerful pattern searching tool to find information about a specific user from the system accounts file: /etc/passwd.
+7. **grep:** It is a powerful pattern searching tool to find information about a specific user from the system accounts file: /etc/passwd.
 
-       ```cmd
-       $ grep -i sj /etc/passwd
-       sj:x:1000:1000:sj,,,:/home/sj:/bin/bash
-       ```
+    ```cmd
+    $ grep -i sj /etc/passwd
+    sj:x:1000:1000:sj,,,:/home/sj:/bin/bash
+    ```
 
 8. **W Command:** It(W) is a command-line utility that displays information about currently logged in users and what each user is doing.
 
@@ -131,7 +131,7 @@
 
 ### File and directory commands
 
-1. **pwd** The pwd(Present Working Directory) command is used to print the name of the present/current working directory starting from the root.
+1. **pwd** The pwd(Print Working Directory) command is used to print the name of the present/current working directory starting from the root.
    ```bash
    $ pwd
    /home/sj/Desktop/Linux
@@ -223,13 +223,47 @@
        ```bash
        touch -t 1911010000 file_name
        ```
-6. **cat**: The cat command is used to create single or multiple files, view contain of file, concatenate files and redirect output in terminal or files.
+6. **cat**: The cat command is used to create single or multiple files, view the content of a file, concatenate files and redirect output in terminal or files.
 
-   1. **View file contents:** You can view contents of a single or more files by mentioning the filenames.
+    1. **View file contents:** You can view contents of a single or more files by mentioning the filenames.
 
        ```bash
        cat file_name1 file_name2
        ```
+
+    2. **Concatenate files:** You concatenate two or more files by mentioning the filenames and redirecting the output to a file.
+
+       ```bash
+       cat file_name1 file_name2 > output_file
+       ```
+       _NOTE:_ if the `output_file` does not exist, it will be created, and if it does exist, its content will be overwritten, to avoid that you need to use the `>>` operator ( instead of `>` ) which will append the cat result to the end of the file.
+
+7. **mv**: this command is used to move files or directories to an other location, it can also be used rename files and directories.
+
+    1. **move files:** You can move files or directoris by providing the list of files names and the last option is the destination folder.
+
+       ```bash
+       mv file1 file2 file2 file3  dir_name 
+       # Example: moving text1 text2 text3 to the Desktop folder
+       mv text1 text2 text3 /home/u/Desktop
+       # move a folder
+       mv folder_name folder_destination
+       ```
+    2. **rename files:** You can rename files by providing the file and the new name.
+
+       ```bash
+       mv file1 new_name 
+       ```
+
+8. **cp**: this command is used to create a copy of files or directories in an other location.
+
+    ```bash
+    cp file1 file2 file2 file3  dir_name 
+    # Example: coping text1 text2 text3 to the Desktop folder
+    cp text1 text2 text3 /home/u/Desktop
+    # Example: coping a folder
+    cp -r folder_name folder_destination
+    ```
 
 **[⬆ Back to Top](#table-of-contents)**
 
@@ -300,7 +334,7 @@ The file permissions will be represented in a three-digit octal number.
 Let's update the permissions in absolute mode with an example as below,
 
    ```cmd
-    chmode 764 test.txt
+    chmod 764 test.txt
    ```
 
 2. **Symbolic mode:**
@@ -483,34 +517,54 @@ du  --help
 
 ### System and Hardware information
 
-1.  **Print all information**: `uname` is mainly used to print system information.
+1. **Print all information**: `uname` is mainly used to print system information.
 
 ```bash
 $ uname -a
 ```
 
-2.  **Print kernel name**:
+2. **Print kernel name**:
 
 ```bash
 $ uname -s
 ```
 
-3.  **Print kernel release**:
+3. **Print kernel release**:
 
 ```bash
 $ uname -r
 ```
 
-4.  **Print Architecture**:
+4. **Print Architecture**:
 
 ```bash
 $ uname -m
 ```
 
-5.  **Print Operating System**:
+5. **Print Operating System**:
 
 ```bash
 $ uname -o
+```
+
+6. **CPU Informations:**
+
+```bash
+$ lscpu
+```
+
+7. **Hardware Informations:**
+
+```bash
+$ hwinfo
+```
+_NOTE:_ it might not be installed by default, to install it use `apt install hwinfo`, and it prints a long list of informations (pretty much all the hardwares informattion), use it with `--short` option for a summary of the most usefull infos.
+
+8. **RAM Informations:**
+
+```bash
+# `-k` kibibytes -default-, `-m` mebibytes, `-g` gibibytes ... 
+$ free -m
 ```
 
 **[⬆ Back to Top](#table-of-contents)**
@@ -540,8 +594,11 @@ i. **Search file with name:**
 ```cmd
 find ./directory_name -name file_name
 
-Example:
-find ./test -name test.txt // ./test/test.txt
+# Example:
+find ./test -name test.txt          // ./test/test.txt
+
+# Or use `-iname` for case insensitive search 
+find ./test -iname tEsT.txt         // ./test/test.txt
 ```
 
 ii. **Search file with pattern:**
