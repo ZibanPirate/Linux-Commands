@@ -558,7 +558,7 @@ $ lscpu
 ```bash
 $ hwinfo
 ```
-_NOTE:_ it might not be installed by default, to install it use `apt install hwinfo`, and it prints a long list of informations (pretty much all the hardwares informattion), use it with `--short` option to a summary the most usefull infos.
+_NOTE:_ it might not be installed by default, to install it use `apt install hwinfo`, and it prints a long list of informations (pretty much all the hardwares informattion), use it with `--short` option for a summary of the most usefull infos.
 
 8. **RAM Informations:**
 
